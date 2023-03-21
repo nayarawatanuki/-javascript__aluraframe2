@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="src/assets/styles/style.css">
+
+        <title>Negociações</title>
+    </head>
+    <body class="container">
+        <h1 class="text-center">Negociações</h1>
+
+        <section id="messageView"></section>
+        <form class="form">
+            
+            <fieldset class="form-group">
+                <label for="date">Data</label>
+                <input type="datetime-local" id="date" class="form-control" required autofocus/>        
+            </fieldset>    
+            
+            <fieldset class="form-group">
+                <label for="quantity">Quantidade</label>
+                <input type="number" min="1" step="1" id="quantity" class="form-control" value="1" required/>
+            </fieldset>
+            
+            <fieldset class="form-group">
+                <label for="value">Valor</label>
+                <input id="value" type="number" class="form-control"  min="0.01" step="0.01" value="0.0" required />
+            </fieldset>
+            
+            <button class="btn btn-primary mt-3" type="submit" data-create>Incluir</button>
+        </form>
+        
+        <div class="text-center">
+            <button class="btn btn-primary text-center" type="button" data-import>
+                Importar Negociações
+            </button>
+            <button class="btn btn-primary text-center" type="button" data-delete>
+                Apagar
+            </button>
+        </div> 
+        <br>
+        <br>
+
+        <section id="negotiationsView"></section>
+
+        <script type="module" src="src/assets/js/index.js"></script>
+    </body>
+</html>
