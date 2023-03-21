@@ -18,13 +18,13 @@ importNeg.addEventListener("click", event => controller.import(event));
 clean.addEventListener("click", event => controller.delete(event));
 
 
-filterDate.addEventListener("click", () => controller.ordena('date'));
+filterDate.addEventListener("click", () => controller.order('date'));
 
-filterQuantity.addEventListener("click", () => controller.ordena('quantity'));
+filterQuantity.addEventListener("click", () => controller.order('quantity'));
 
-filterValue.addEventListener("click", () => controller.ordena('value'));
+filterValue.addEventListener("click", () => controller.order('value'));
 
-filterVolume.addEventListener("click", () => controller.ordena('volume'));
+filterVolume.addEventListener("click", () => controller.order('volume'));
 
 
 // let n1 = new Negotiation(new Date(), 5, 700);
