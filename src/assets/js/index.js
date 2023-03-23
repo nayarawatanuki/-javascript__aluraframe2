@@ -6,17 +6,18 @@ let create = document.querySelector("[data-create]");
 let importNeg = document.querySelector("[data-import]");
 let clean = document.querySelector("[data-delete]");
 
-let filterDate = document.querySelector("#data-date");
-let filterQuantity = document.querySelector("#data-quantity");
-let filterValue = document.querySelector("#data-value");
-let filterVolume = document.querySelector("#data-volume");
-
 create.addEventListener("click", event => controller.insert(event));
 
-importNeg.addEventListener("click", event => controller.import(event));
+importNeg.addEventListener("click", () => controller.import());
 
 clean.addEventListener("click", event => controller.delete(event));
 
+
+
+let filterDate = document.querySelector("[data-date]");
+let filterQuantity = document.querySelector("[data-quantity]");
+let filterValue = document.querySelector("[data-value]");
+let filterVolume = document.querySelector("[data-volume]");
 
 filterDate.addEventListener("click", () => controller.order('date'));
 

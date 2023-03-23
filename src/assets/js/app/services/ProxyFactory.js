@@ -12,7 +12,7 @@ export class ProxyFactory {
         
                         console.log(`interceptando ${prop}`);
                         Reflect.apply(target[prop], target, arguments);
-                        return action(target);
+                        action(target);
                     }
                 }
         

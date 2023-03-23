@@ -10,16 +10,6 @@ export class NegotiationsView extends View {
 
     template(model) {
         return `
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th id="data-date">DATA</th>
-                        <th id="data-quantity">QUANTIDADE</th>
-                        <th id="data-value">VALOR</th>
-                        <th id="data-volume">VOLUME</th>
-                    </tr>
-                </thead>
-                
                 <tbody>
                     ${model.negotiations.map(n => `
                         <tr>

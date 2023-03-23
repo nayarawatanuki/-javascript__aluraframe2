@@ -17,28 +17,14 @@ export class NegotiationController {
         this._date = $("#date");
         this._quantity = $("#quantity");
         this._value = $("#value");
-
-        this._currentSort = "";
-        
-        // this._listNegotiations = new ListNegotiations(model => {
-
-        //     this._negotiationsView.update(model);
-        // });
-
-        this._listNegotiations = new Bind(new ListNegotiations(), new NegotiationsView($("#negotiationsView")), 'add', 'delete', 'order', 'sortReverse');
-
-        // this._listNegotiations = ProxyFactory.create(new ListNegotiations(), ['add', 'delete'], model => {
-        //     this._negotiationsView.update(model)
-        // });
-
-        // this._negotiationsView.update(this._listNegotiations);
-
-        this._message = new Bind(new Message(), new MessageView($("#messageView")), 'text');
-        
-        // this._message = ProxyFactory.create(new Message(), ['text'], model => 
-        // this._messageView.update(model));
-        
-        // this._messageView.update(this._message);
+            
+        this._listNegotiations = new Bind(
+            new ListNegotiations(), 
+            new NegotiationsView($("#negotiationsView")), 'add', 'delete', 'order', 'sortReverse');
+                    
+            this._message = new Bind(new Message(), new MessageView($("#messageView")), 'text');
+                    
+            this._currentSort = "";
     } // evita percorrer o DOM muitas vezes
 
     _create() {
@@ -72,20 +58,21 @@ export class NegotiationController {
         this._cleanForm();
     }
 
-    import(event) {
-
-        event.preventDefault();
+    import() {
 
         let service = new NegotiationService();
 
         service.getNegotiations()
         .then(negotiations => {
 
-            negotiations.forEach(negotiation => this._listNegotiations.add(negotiation));
+            negotiations.forEach(negotiation => {
+                
+                this._listNegotiations.add(negotiation)
 
-            this._message.class = "alert alert-success";
-            this._message.title = "Status:";
-            this._message.text = "Negociações importadas com sucesso.";
+                this._message.class = "alert alert-success";
+                this._message.title = "Status:";
+                this._message.text = "Negociações importadas com sucesso.";
+            })
         }) .catch(error => {
 
             this._message.class = "alert alert-danger";
