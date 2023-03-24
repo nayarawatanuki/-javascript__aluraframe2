@@ -2,7 +2,7 @@
 
 var express = require('express')
     ,app = express()
-    ,routes = require('../app/routes')
+    ,routes = require('../routes')
     ,path =  require('path')
     ,bodyParser = require('body-parser');
 
@@ -16,7 +16,6 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
 
 routes(app);
 

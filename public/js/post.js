@@ -1,0 +1,1 @@
+import "../../src/functions/post-service/index.js";

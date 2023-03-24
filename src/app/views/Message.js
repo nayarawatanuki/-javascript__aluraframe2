@@ -1,4 +1,4 @@
-import { View } from "../views/View.js";
+import { View } from "./View.js";
 
 export class MessageView extends View {
 

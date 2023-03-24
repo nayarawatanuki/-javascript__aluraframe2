@@ -14,17 +14,23 @@ export class NegotiationController {
     constructor() {
 
         let $ = document.querySelector.bind(document); //bind indica que a função/metodo pertence ao objeto.
+
+        this._form = $("form");
+
         this._date = $("#date");
         this._quantity = $("#quantity");
         this._value = $("#value");
+
+        this._service = new NegotiationService();
             
         this._listNegotiations = new Bind(
             new ListNegotiations(), 
-            new NegotiationsView($("#negotiationsView")), 'add', 'delete', 'order', 'sortReverse');
+            new NegotiationsView($("#negotiationsView")), 'add', 'delete', 'order', 'sortReverse'
+        );
                     
-            this._message = new Bind(new Message(), new MessageView($("#messageView")), 'text');
-                    
-            this._currentSort = "";
+        this._message = new Bind(new Message(), new MessageView($("#messageView")), 'text');
+                
+        this._currentSort = "";
     } // evita percorrer o DOM muitas vezes
 
     _create() {
@@ -38,8 +44,6 @@ export class NegotiationController {
     }
 
     _cleanForm() {
-
-        this._form = document.querySelector("form");
 
         this._form.reset();
         this._date.focus();
@@ -60,9 +64,7 @@ export class NegotiationController {
 
     import() {
 
-        let service = new NegotiationService();
-
-        service.getNegotiations()
+        this._service.getNegotiations()
         .then(negotiations => {
 
             negotiations.forEach(negotiation => {

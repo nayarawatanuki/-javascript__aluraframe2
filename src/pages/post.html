@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="../../public/styles/style.css">
+
+        <title>Negociações</title>
+    </head>
+
+    <body class="container">
+        <h1 class="text-center">Negociações - Servidor</h1>
+
+        <section id="post_messageView"></section>
+        <form class="form" id="post_form">
+            
+            <fieldset class="form-group">
+                <label for="post_date">Data</label>
+                <input type="datetime-local" id="post_date" class="form-control" required autofocus/>        
+            </fieldset>    
+            
+            <fieldset class="form-group">
+                <label for="post_quantity">Quantidade</label>
+                <input type="number" min="1" step="1" id="post_quantity" class="form-control" value="1" required/>
+            </fieldset>
+            
+            <fieldset class="form-group">
+                <label for="post_value">Valor</label>
+                <input id="post_value" type="number" class="form-control"  min="0.01" step="0.01" value="0.0" required />
+            </fieldset>
+            
+            <button class="btn btn-primary mt-3" type="submit" data-sendService>Enviar dados para servidor</button>
+        </form>
+    </body>
+
+    <script type="module" src="../../public/js/post.js"></script>
+</html>

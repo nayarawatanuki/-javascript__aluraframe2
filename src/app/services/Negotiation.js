@@ -14,7 +14,7 @@ export class NegotiationService {
 
         try {
 
-            const negotiations = await this._http.get('negotiations/week');
+            const negotiations = await this._http.get('server/negotiations/week');
 
             return negotiations.map(negotiation => new Negotiation(new Date(negotiation.date), negotiation.quantity, negotiation.value));
             
@@ -29,7 +29,7 @@ export class NegotiationService {
 
         try {
 
-            const negotiations = await this._http.get('negotiations/past');
+            const negotiations = await this._http.get('server/negotiations/past');
 
             return negotiations.map(negotiation => new Negotiation(new Date(negotiation.date), negotiation.quantity, negotiation.value));
 
@@ -44,7 +44,7 @@ export class NegotiationService {
 
         try {
 
-            const negotiations = await this._http.get('negotiations/before-last');
+            const negotiations = await this._http.get('server/negotiations/before-last');
 
             return negotiations.map(negotiation => new Negotiation(new Date(negotiation.date), negotiation.quantity, negotiation.value));
 
@@ -70,6 +70,24 @@ export class NegotiationService {
 
         } catch (error) {
             throw new Error(error);
+        }
+    }
+
+    async post(negotition, cleanForm) {
+
+        try {
+
+            const addNegotiation = await this._http.post('/server/add-negotiations/send', negotition)
+            .then(() => {
+
+                cleanForm; 
+                console.log("Negociação enviada com sucesso");
+            })
+
+            return addNegotiation;
+        } catch(err) {
+
+            throw new Error(`Não foi possível enviar a negociação: ${err}`)
         }
     }
 }

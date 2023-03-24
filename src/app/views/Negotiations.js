@@ -1,4 +1,4 @@
-import { View } from "../views/View.js";
+import { View } from "./View.js";
 import { DateHelper } from "../helpers/Date.js";
 
 export class NegotiationsView extends View {
